@@ -1,14 +1,27 @@
 {
-  "name": "promatica-dashboard",
+  "name": "employee-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://oliverpatrick.github.io/employee-dashboard",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write .",
+    "deploy": "gh-pages -d build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "yarn run eslint --fix"
+    ],
+    "*.{md,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "moment": "^2.29.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -16,8 +29,13 @@
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "autoprefixer": "^10.4.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
+    "gh-pages": "^3.2.3",
+    "postcss": "^8.4.8",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.23",
     "typescript": "4.6.2"
   }
 }
