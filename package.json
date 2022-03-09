@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
-    "deploy": "gh-pages -d out"
+    "deploy": "gh-pages -d .next"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
