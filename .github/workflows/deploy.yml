@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        name: Setup Node
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: "16.x"
@@ -18,7 +18,7 @@ jobs:
         run: npm ci
         name: Build App
       - run: npm run build
-        name: Deploy
+      - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
           target_bracnh: gh-pages
