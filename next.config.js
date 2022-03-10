@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: '/employee-dashboard',
-  assetPrefix: 'oliverpatrick.github.io/employee-dashboard/'
+  assetPrefix: 'oliverpatrick.github.io/'
 };
 
 module.exports = nextConfig;
