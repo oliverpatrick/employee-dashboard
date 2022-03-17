@@ -22,9 +22,9 @@ function Timesheet() {
   };
 
   return (
-    <>
+    <div className="flex flex-col justify-center w-full">
       <WeekSelector />
-      <div className="flex flex-row w-48">
+      <div className="flex justify-center">
         <TimesheetColumn
           dayName="Monday"
           changeNotify={(v: any) => dailySummary(0, v)}
@@ -46,10 +46,15 @@ function Timesheet() {
           changeNotify={(v: any) => dailySummary(4, v)}
         />
       </div>
-      <form className="flex flex-col justify-center">
-        <label className="flex flex-row my-2 text-blue-500" htmlFor="weekly">
+
+      <form className="flex flex-col ">
+        <label
+          className="flex flex-row justify-between my-2 mr-2 text-blue-500 font-semibold"
+          htmlFor="weekly"
+        >
           Weekly Total:
           <input
+            className="w-20 text-center"
             type="text"
             name="weekly"
             value={weeklySummary}
@@ -57,9 +62,13 @@ function Timesheet() {
           ></input>
         </label>
 
-        <label className="flex flex-row my-2 text-blue-500" htmlFor="quota">
+        <label
+          className="flex flex-row justify-between my-2 mr-2 text-blue-500"
+          htmlFor="quota"
+        >
           {'Weekly Quota: '}
           <input
+            className="w-20 text-center"
             type="text"
             name="quota"
             value={minsToTimeStr(weeklyRequired)}
@@ -67,16 +76,25 @@ function Timesheet() {
           ></input>
         </label>
 
-        <label className="flex flex-row my-2 text-blue-500" htmlFor="overtime">
+        <label
+          className="flex flex-row justify-between my-2 mr-2 text-red-500 line-through"
+          htmlFor="overtime"
+        >
           {'Weekly Overtime: '}
-          <input type="text" name="overtime" value={overtime} disabled></input>
+          <input
+            className="w-20 text-center"
+            type="text"
+            name="overtime"
+            value={overtime}
+            disabled
+          ></input>
         </label>
 
         <button type="submit" value={'Submit'}>
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

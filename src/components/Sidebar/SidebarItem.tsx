@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { ChevronRightIcon } from '@heroicons/react/outline';
 
 type Props = {
   route: string;
@@ -10,12 +11,18 @@ type Props = {
 
 function SidebarItem({ route, open, page, icon }: Props) {
   return (
-    <Link href={route}>
-      <li className="py-2 cursor-pointer flex items-center rounded-md hover:bg-zinc-700 pl-2">
+    <Link href={route} passHref>
+      <li
+        className={
+          'py-2 cursor-pointer flex items-center justify-between rounded-md hover:bg-zinc-700 pl-2'
+        }
+      >
         <div className="w-5 rounded-md">{icon}</div>
-        <span className={open ? 'font-medium text-md px-3' : 'hidden'}>
-          {page}
-        </span>
+        {open ? (
+          <span className={'font-medium text-sm px-3'}>{page}</span>
+        ) : (
+          <ChevronRightIcon className="w-5" />
+        )}
       </li>
     </Link>
   );

@@ -6,6 +6,7 @@ import {
 import moment from 'moment';
 
 function WeekSelector() {
+  const [dateSelection, setDateSelection] = React.useState();
   const [subtract, setSubtract] = React.useState<number>(0);
 
   let weekStart = moment()
@@ -19,7 +20,7 @@ function WeekSelector() {
     .format('DD MMM');
 
   return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-row items-center justify-center">
       <ArrowCircleLeftIcon
         className="p-1 m-1 w-8 hover:text-gray-600 hover:bg-gray-100 hover:rounded-full"
         onClick={() => setSubtract(subtract + 1)}

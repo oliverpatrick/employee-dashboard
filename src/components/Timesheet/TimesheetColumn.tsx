@@ -51,7 +51,7 @@ function TimesheetColumn(props: any) {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center flex flex-col">
       <h3 className="font-semibold">{props.dayName}</h3>
       <TimeInput changeNotify={notifyDayStart} default="09:00" />
       <TimeInput changeNotify={notifyLunchStart} default="12:00" />
