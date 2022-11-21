@@ -1,13 +1,10 @@
-import { extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
-
-const styles = {
-  global: (props: any) => ({
-    body: {
-      bg: mode("#e3e3e3", "#202023")(props),
-    },
-  }),
-};
+// const styles = {
+//   global: (props: any) => ({
+//     body: {
+//       bg: mode("#e3e3e3", "#202023")(props),
+//     },
+//   }),
+// };
 
 const components = {
   Heading: {
@@ -40,11 +37,17 @@ const config = {
   useSystemColorMode: true,
 };
 
-const theme = extendTheme({
-  config,
-  styles,
-  components,
-  colors,
-});
+const theme =
+  extendTheme();
+  //   {
+  //   config,
+  //   styles,
+  //   components,
+  //   colors,
+  // }
 
 export default theme;
+
+function extendTheme() {
+  throw new Error("Function not implemented.");
+}
