@@ -45,7 +45,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function AuthenticationImage() {
+export default function AuthenticationImage() {
   const { classes } = useStyles();
   return (
     <div className={classes.wrapper}>
