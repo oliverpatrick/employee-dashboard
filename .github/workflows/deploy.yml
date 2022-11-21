@@ -13,11 +13,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: "16.x"
       - name: Install NPM deps
         run: npm ci
       - name: Build App
-        run: npm run build
+        run: npm run export
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
