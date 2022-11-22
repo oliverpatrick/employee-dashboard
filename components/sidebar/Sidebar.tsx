@@ -1,4 +1,10 @@
-import { createStyles, Navbar, UnstyledButton, Badge } from "@mantine/core";
+import {
+  createStyles,
+  Navbar,
+  UnstyledButton,
+  Badge,
+  MantineNumberSize,
+} from "@mantine/core";
 import {
   IconUser,
   IconCheckbox,
@@ -168,7 +174,15 @@ const links = [
   { icon: IconUser, label: "Team" },
 ];
 
-export function Sidebar({ path }: any) {
+export function Sidebar({
+  path,
+  hidden,
+  hiddenBreakpoint,
+}: {
+  path: any;
+  hidden: boolean;
+  hiddenBreakpoint: MantineNumberSize | undefined;
+}) {
   const { classes } = useStyles();
 
   const mainLinks = links.map((link) => (
@@ -190,13 +204,18 @@ export function Sidebar({ path }: any) {
   ));
 
   return (
-    <Navbar width={{ sm: 300 }} p="md" className={classes.navbar}>
+    <Navbar
+      hiddenBreakpoint={hiddenBreakpoint}
+      width={{ sm: 200, lg: 300 }}
+      p="md"
+      className={classes.navbar}
+      hidden={hidden}
+    >
       <Navbar.Section className={classes.section}>
         <UserSection
           image="https://i.imgur.com/fGxgcDF.png"
           name="Bob Rulebreaker"
           email="Product owner"
-          icon={undefined}
         />
       </Navbar.Section>
       <Navbar.Section className={classes.section}>
