@@ -1,5 +1,6 @@
-import React from 'react';
-import TimeInput from './TimeInput';
+import { Title, Text, Box } from "@mantine/core";
+import React from "react";
+import TimeInput from "./TimeInput";
 
 function TimesheetColumn(props: any) {
   const [daySummary, setDaySummary] = React.useState<string | number>(0);
@@ -13,8 +14,8 @@ function TimesheetColumn(props: any) {
     let m: number | string = val % 60;
     let h: number | string = (val - m) / 60;
 
-    h = h < 10 ? '0' + h : h;
-    m = m < 10 ? '0' + m : m;
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
 
     return `${h}:${m}`;
   }
@@ -51,14 +52,20 @@ function TimesheetColumn(props: any) {
   };
 
   return (
-    <div className="text-center flex flex-col">
-      <h3 className="font-semibold">{props.dayName}</h3>
+    <Box
+      sx={(theme) => ({
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+      })}
+    >
+      <Title order={5}>{props.dayName}</Title>
       <TimeInput changeNotify={notifyDayStart} default="09:00" />
       <TimeInput changeNotify={notifyLunchStart} default="12:00" />
       <TimeInput changeNotify={notifyLunchEnd} default="12:30" />
       <TimeInput changeNotify={notifyDayEnd} default="17:00" />
-      <p className="font-semibold">{daySummary}</p>
-    </div>
+      <Text fz="sx">{daySummary}</Text>
+    </Box>
   );
 }
 

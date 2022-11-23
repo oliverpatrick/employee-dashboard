@@ -1,11 +1,39 @@
-import React from 'react';
-import { minsToTimeStr } from '../../utils/time-utils';
-import TimesheetColumn from './TimesheetColumn';
-import WeekSelector from './WeekSelector';
+import React, { useState } from "react";
+import { Button, createStyles, Input, Box } from "@mantine/core";
+import { minsToTimeStr } from "../../utils/time-utils";
+import TimesheetColumn from "./TimesheetColumn";
+import WeekSelector from "./WeekSelector";
+
+const useStyles = createStyles((theme) => ({
+  timesheet: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "100%",
+  },
+
+  timesheetRow: {
+    display: "flex",
+    justifyContent: "center",
+  },
+
+  label: {
+    display: "flex",
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem",
+    marginRight: "0.5rem",
+    color: "#3B82F6",
+    fontWeight: 600,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+}));
 
 function Timesheet() {
-  const [weeklySummary, setWeeklySummary] = React.useState<string | number>(0);
-  const [overtime, setOvertime] = React.useState<string | number>(0);
+  const { classes } = useStyles();
+
+  const [weeklySummary, setWeeklySummary] = useState<string | number>(0);
+  const [overtime, setOvertime] = useState<string | number>(0);
 
   let dailyValues = [0, 0, 0, 0, 0];
   let weeklyRequired = 37.5 * 60;
@@ -22,9 +50,9 @@ function Timesheet() {
   };
 
   return (
-    <div className="flex flex-col justify-center w-full">
+    <Box className={classes.timesheet}>
       <WeekSelector />
-      <div className="flex justify-center">
+      <div className={classes.timesheetRow}>
         <TimesheetColumn
           dayName="Monday"
           changeNotify={(v: any) => dailySummary(0, v)}
@@ -47,54 +75,32 @@ function Timesheet() {
         />
       </div>
 
-      <form className="flex flex-col ">
-        <label
-          className="flex flex-row justify-between my-2 mr-2 text-blue-500 font-semibold"
-          htmlFor="weekly"
-        >
+      <form>
+        <label className={classes.label} htmlFor="weekly">
           Weekly Total:
-          <input
-            className="w-20 text-center"
-            type="text"
-            name="weekly"
-            value={weeklySummary}
-            disabled
-          ></input>
+          <Input type="text" name="weekly" value={weeklySummary} disabled />
         </label>
 
-        <label
-          className="flex flex-row justify-between my-2 mr-2 text-blue-500"
-          htmlFor="quota"
-        >
-          {'Weekly Quota: '}
-          <input
-            className="w-20 text-center"
+        <label className={classes.label} htmlFor="quota">
+          {"Weekly Quota: "}
+          <Input
             type="text"
             name="quota"
             value={minsToTimeStr(weeklyRequired)}
             disabled
-          ></input>
+          />
         </label>
 
-        <label
-          className="flex flex-row justify-between my-2 mr-2 text-red-500 line-through"
-          htmlFor="overtime"
-        >
-          {'Weekly Overtime: '}
-          <input
-            className="w-20 text-center"
-            type="text"
-            name="overtime"
-            value={overtime}
-            disabled
-          ></input>
+        <label className={classes.label} htmlFor="overtime">
+          {"Weekly Overtime: "}
+          <Input type="text" name="overtime" value={overtime} disabled />
         </label>
 
-        <button type="submit" value={'Submit'}>
+        <Button type="submit" value={"Submit"}>
           Submit
-        </button>
+        </Button>
       </form>
-    </div>
+    </Box>
   );
 }
 

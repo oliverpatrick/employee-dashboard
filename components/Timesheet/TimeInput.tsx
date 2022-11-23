@@ -1,11 +1,12 @@
-import React from 'react';
-import { timeStrToMins } from '../../utils/time-utils';
+import { Input } from "@mantine/core";
+import React from "react";
+import { timeStrToMins } from "../../utils/time-utils";
 
 function TimeInput(props: any) {
   const [formattedVal, setformattedVal] = React.useState<any>(props.default);
   const [minutes, setMinutes] = React.useState(0);
 
-  let currVal = '';
+  let currVal = "";
 
   props.changeNotify(timeStrToMins(formattedVal));
 
@@ -19,8 +20,8 @@ function TimeInput(props: any) {
   };
 
   return (
-    <input
-      className="cursor-default m-1 p1 text-gray-600 text-center border border-slate-300 rounded-sm w-20 h-7 text-[100%] transition-all hover:border-zinc-500 focus:border-red-600"
+    <Input
+      // className="cursor-default m-1 p1 text-gray-600 text-center border border-slate-300 rounded-sm w-20 h-7 text-[100%] transition-all hover:border-zinc-500 focus:border-red-600"
       type="time"
       onChange={onInputHandle}
       onInput={onInputHandle}

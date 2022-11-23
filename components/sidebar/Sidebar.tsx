@@ -8,7 +8,6 @@ import {
 import {
   IconUser,
   IconCheckbox,
-  IconSelector,
   IconNotes,
   IconAdjustments,
   IconCalendar,

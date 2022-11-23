@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { Box, createStyles } from "@mantine/core";
 import { IconChevronRight, IconChevronLeft } from "@tabler/icons";
 import moment from "moment";
 
+const useStyles = createStyles((theme) => ({
+  datePeriod: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  chevron: {
+    padding: "0.25rem",
+    margin: "0.25rem",
+    width: "2rem",
+
+    "&:hover": {
+      backgroundColor: "#F3F4F6",
+      color: "#4B5563",
+      borderRadius: "9999px",
+    },
+  },
+
+  dateText: {
+    marginLeft: "1.25rem",
+    marginRight: "1.25rem",
+    fontWeight: 600,
+    textAlign: "center",
+    width: "10rem",
+  },
+}));
+
 function WeekSelector() {
-  const [dateSelection, setDateSelection] = React.useState();
-  const [subtract, setSubtract] = React.useState<number>(0);
+  const { classes } = useStyles();
+  const [dateSelection, setDateSelection] = useState();
+  const [subtract, setSubtract] = useState<number>(0);
 
   let weekStart = moment()
     .subtract(subtract, "weeks")
@@ -17,17 +48,17 @@ function WeekSelector() {
     .format("DD MMM");
 
   return (
-    <div className="flex flex-row items-center justify-center">
+    <Box className={classes.datePeriod}>
       <IconChevronLeft
-        className="p-1 m-1 w-8 hover:text-gray-600 hover:bg-gray-100 hover:rounded-full"
+        className={classes.chevron}
         onClick={() => setSubtract(subtract + 1)}
       />
-      <div className="mx-5 font-semibold w-40 text-center">{`${weekStart} - ${weekEnd}`}</div>
+      <div className={classes.dateText}>{`${weekStart} - ${weekEnd}`}</div>
       <IconChevronRight
-        className="p-1 m-1 w-8 hover:text-gray-600 hover:bg-gray-100 hover:rounded-full"
+        className={classes.chevron}
         onClick={() => setSubtract(subtract - 1)}
       />
-    </div>
+    </Box>
   );
 }
 

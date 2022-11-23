@@ -1,8 +1,6 @@
-import React from 'react';
+import React from "react";
 
-type Props = {};
-
-function Calender({}: Props) {
+function Calender() {
   return (
     <div className="flex flex-grow flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
       <div className="border-b">
